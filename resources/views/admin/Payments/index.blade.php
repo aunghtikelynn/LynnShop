@@ -3,39 +3,33 @@
     <div class="container-fluid px-4">
         <div class="my-3">
             <h1 class="mt-4">Items</h1>
-            <a href="{{route('backend.items.create')}}" class="btn btn-primary float-end">Create Item</a>
+            <a href="{{route('backend.payments.create')}}" class="btn btn-primary float-end">Create Payments</a>
         </div>
         <ol class="breadcrumb mb-4">
             <li class="breadcrumb-item"><a href="{{route('backend.dashboard')}}">Dashboard</a></li>
-            <li class="breadcrumb-item active">Items</li>
+            <li class="breadcrumb-item active">Payments</li>
         </ol>
         
         <div class="card mb-4">
             <div class="card-header">
                 <i class="fas fa-table me-1"></i>
-                Posts List
+                Payments List
             </div>
             <div class="card-body">
                 <table class="table table-bordered">
                     <thead>
                         <tr>
                             <th>No.</th>
-                            <th>CodeNo</th>
-                            <th>Item Name</th>
-                            <th>Price</th>
-                            <th>Instock</th>
-                            <th>Category</th>
+                            <th>Name</th>
+                            <th>Logo</th>
                             <th>#</th>
                         </tr>
                     </thead>
                     <tfoot>
                         <tr>
                             <th>No.</th>
-                            <th>CodeNo</th>
-                            <th>Item Name</th>
-                            <th>Price</th>
-                            <th>Instock</th>
-                            <th>Category</th>
+                            <th>Name</th>
+                            <th>Logo</th>
                             <th>#</th>
                         </tr>
                     </tfoot>
@@ -43,14 +37,11 @@
                         @php 
                             $i = 1;
                         @endphp
-                        @foreach($items as $item)
+                        @foreach($payments as $payment)
                             <tr>
                                 <td>{{$i++}}</td>
-                                <td>{{$item->code_no}}</td>
-                                <td>{{$item->name}}</td>
-                                <td>{{$item->price}}</td>
-                                <td>{{$item->in_stock}}</td>
-                                <td>{{$item->category_id}}</td>
+                                <td>{{$payment->name}}</td>
+                                <td><img src="{{$payment->logo}}" alt="" width="100"></td>
                                 <td>
                                     <a href="" class="btn btn-sm btn-warning">Edit</a>
                                     <a href="" class="btn btn-sm btn-danger">Delete</a>
@@ -59,7 +50,7 @@
                         @endforeach
                     </tbody>
                 </table>
-                {{$items->links()}}
+                {{$payments->links()}}
             </div>
         </div>
     </div>
