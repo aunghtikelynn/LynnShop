@@ -37,7 +37,7 @@ class PaymentController extends Controller
 
         $upload = $request->logo->move(public_path('images/payments/'),$file_name);
         if($upload){
-            $payments->logo = "/images/payments".$file_name;
+            $payments->logo = "/images/payments/".$file_name;
         }
         $payments->save();
 
