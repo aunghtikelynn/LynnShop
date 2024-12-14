@@ -61,7 +61,9 @@ class ItemController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $item = Item::find($id);
+        $categories = Category::all();
+        return view('admin.items.edit',compact('item','categories'));
     }
 
     /**
@@ -77,6 +79,9 @@ class ItemController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        // echo "<h1>$id</h1>";
+        $item = Item::find($id);
+        $item->delete();
+        return redirect()->route('backend.items.index');
     }
 }
