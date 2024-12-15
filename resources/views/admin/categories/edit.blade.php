@@ -16,8 +16,9 @@
             Edit Category
         </div>
         <div class="card-body">
-            <form action="{{route('backend.categories.store')}}" method="post" enctype="multipart/form-data">
+            <form action="{{route('backend.categories.update',$category->id)}}" method="post" enctype="multipart/form-data">
                 @csrf
+                @method('put')
                 <div class="mb-3">
                     <label for="name" class="form-label fw-bold">Name</label>
                     <input type="text" class="form-control @error('name') is-invalid @enderror" value="{{$category->name}}" id="name" name="name">
@@ -26,8 +27,25 @@
                     @enderror
                 </div>
                 <div class="mb-3">
-                    <label for="image" class="form-label fw-bold">Image</label>
-                    <input type="file" class="form-control @error('image') is-invalid @enderror" accept="image/*" id="image" name="image">
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="image-tab" data-bs-toggle="tab" data-bs-target="#image-tab-pane" type="button" role="tab" aria-controls="image-tab-pane" aria-selected="true">Image</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="new_image-tab" data-bs-toggle="tab" data-bs-target="#new_image-tab-pane" type="button" role="tab" aria-controls="new_image-tab-pane" aria-selected="false">New Image</button>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="image-tab-pane" role="tabpanel" aria-labelledby="image-tab" tabindex="0">
+                            <img src="{{$category->image}}" alt="" class="w-25 h-25 my-3">
+                            <input type="hidden" name="olg_image" id="" value="{{$category->image}}"> 
+                        </div>
+                        <div class="tab-pane fade" id="new_image-tab-pane" role="tabpanel" aria-labelledby="new_image-tab" tabindex="0">
+                            <input type="file" class="form-control my-3 @error('image') is-invalid @enderror" value="{{old('image')}}" accept="image/*" id="image" name="image">
+                        </div>
+                    </div>
+
+                    
                     @error('image')
                         <div class="invalid-feedback">{{ $message}} </div>
                     @enderror
