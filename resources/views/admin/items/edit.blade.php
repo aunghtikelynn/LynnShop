@@ -45,7 +45,7 @@
                     <div class="tab-content" id="myTabContent">
                         <div class="tab-pane fade show active" id="image-tab-pane" role="tabpanel" aria-labelledby="image-tab" tabindex="0">
                             <img src="{{$item->image}}" alt="" class="w-25 h-25 my-3">
-                            <input type="hidden" name="olg_image" id="" value="{{$item->image}}"> 
+                            <input type="hidden" name="old_image" id="" value="{{$item->image}}"> 
                         </div>
                         <div class="tab-pane fade" id="new_image-tab-pane" role="tabpanel" aria-labelledby="new_image-tab" tabindex="0">
                             <input type="file" accept="image/*" class="form-control my-3 @error('image') is-invalid @enderror" value="{{old('image')}}" id="image" name="image">
