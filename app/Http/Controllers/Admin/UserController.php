@@ -22,7 +22,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.users.create');
     }
 
     /**
@@ -30,7 +30,14 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $users = User::create($request->all());
+        // $file_name = time().'.'.$request->profile->extension();
+        // $upload = $request->profile->move(public_path('images/users/'),$file_name);
+        // if($upload){
+        //     $user->profile = "/images/users/".$file_name;
+        // }
+        $users->save();
+        return redirect()->route('backend.users.index');
     }
 
     /**
@@ -62,6 +69,8 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $user = User::find($id);
+        $user->delete();
+        return redirect()->route('backend.users.index');
     }
 }
