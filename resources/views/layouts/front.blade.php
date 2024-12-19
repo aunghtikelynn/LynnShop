@@ -81,13 +81,14 @@
         <footer class="py-5 bg-dark">
             <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2023</p></div>
         </footer>
+        <!-- J Query -->
+        <script src="{{asset('front-assets/js/jquery.min.js')}}"></script>
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
         <script src="{{asset('front-assets/js/scripts.js')}}"></script>
         <!-- Add to Cart JS-->
         <script src="{{asset('front-assets/js/add_to_cart.js')}}"></script>
-        <!-- J Query -->
-        <script src="{{asset('admin-assets/js/jquery.min.js')}}"></script>
+        
     </body>
 </html>
