@@ -11,7 +11,12 @@
                         <h1 class="display-5 fw-bolder">{{$item->name}}</h1>
                         <div class="fs-5 mb-5">
                             <!-- <span class="text-decoration-line-through">$45.00</span> -->
-                            <span>{{$item->price}} MMK</span>
+                            @if($item->discount > 0)
+                                <span class="text-decoration-line-through">{{$item->price}} MMK</span>
+                                {{$item->price - ($item->price*($item->discount/100))}} MMK
+                            @else
+                                {{$item->price}} MMK
+                            @endif
                         </div>
                         <p class="lead">{{$item->description}}</p>
                         <div class="d-flex">

@@ -13,20 +13,22 @@ $(document).ready(function(){
                 data += `<tr>
                     <td>${j++}</td>
                     <td>${v.name}</td>
+                    <td><img src="${v.image}" width="100"></td>
                     <td>${v.price}</td>
+                    <td>${v.discount}</td>
                     <td>
-                    <button class="min" data-key="${i}">-</button>
+                    <button class="btn btn-sm btn-outline-secondary min " data-key="${i}">-</button>
                     ${v.qty}
-                    <button class="max" data-key="${i}">+</button>
+                    <button class="btn btn-sm btn-outline-secondary max " data-key="${i}">+</button>
                     </td>
-                    <td>${v.price * v.qty}</td>
+                    <td>${Math.round((v.price - (v.price*(v.discount/100))) * v.qty)} MMK</td>
                 </tr>`
-                total += v.price * v.qty;
+                total += Math.round((v.price - (v.price*(v.discount/100))) * v.qty);
             })
             data += `<tr>
-                <td colspan="4">Total</td>
-                <td>${total}</td>
-            </tr>`
+                <td colspan="6">Total</td>
+                <td>${total} MMK</td>
+            </tr>`;
             
             $('#tbody').html(data);
         }
