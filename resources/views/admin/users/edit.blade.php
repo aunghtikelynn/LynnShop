@@ -45,7 +45,7 @@
                     <div class="tab-content" id="myTabContent">
                         <div class="tab-pane fade show active" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
                             <img src="{{$user->profile}}" alt="" class="w-25 h-25 my-3">
-                            <input type="hidden" name="old_image" id="" value="{{$user->profile}}"> 
+                            <input type="hidden" name="old_profile" id="" value="{{$user->profile}}"> 
                         </div>
                         <div class="tab-pane fade" id="new_profile-tab-pane" role="tabpanel" aria-labelledby="new_profile-tab" tabindex="0">
                             <input type="file" accept="image/*" class="form-control my-3 @error('profile') is-invalid @enderror" value="{{old('profile')}}" id="profile" name="profile">
@@ -63,10 +63,14 @@
                     @enderror
                 </div>
                 <div class="mb-3">
-                    <label for="email" class="form-label fw-bold">Email</label>
-                    <input type="text" class="form-control @error('email') is-invalid @enderror" value="{{$user->email}}" id="email" name="email">
-                    @error('email')
-                        <div class="invalid-feedback">{{$message}} </div>
+                    <label for="role" class="form-label fw-bold">Role</label>
+                    <select name="role" id="role" class="form-select @error('role') is-invalid @enderror">
+                        <option value="User" {{$user->role == "User" ? 'selected':''}}>User</option>
+                        <option value="Admin" {{$user->role == "Admin" ? 'selected':''}}>Admin</option>
+                        <option value="SuperAdmin" {{$user->role == "SuperAdmin" ? 'selected':''}}>Super Admin</option>
+                    </select>
+                    @error('role')
+                        <div class="invalid-feedback">{{ $message}} </div>
                     @enderror
                 </div>
                 <div class="d-grid gap-2">
