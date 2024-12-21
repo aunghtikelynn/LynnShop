@@ -4,9 +4,9 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Http\Requests\UserRequest;
-
 use App\Models\User;
+use App\Http\Requests\UserRequest;
+use App\Http\Requests\UserUpdateRequest;
 
 class UserController extends Controller
 {
@@ -30,7 +30,7 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
 
         // dd($request);
@@ -57,15 +57,29 @@ class UserController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $user = User::find($id);
+        return view('admin.users.edit', compact('user'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UserUpdateRequest $request, string $id)
     {
-        //
+        $user = User::find($id);
+        $user->update($request->all());
+
+        if($request->hasFile('profile')){
+            $file_name = time().'.'.$request->profile->extension();
+            $upload = $request->profile->move(public_path('images/users/'),$file_name);
+            if($upload){
+                $user->profile = "/images/users/".$file_name;
+            }
+        }else{
+            $user->profile = $request->old_profile;
+        }
+        $user->save();
+        return redirect()->route('backend.users.index');
     }
 
     /**

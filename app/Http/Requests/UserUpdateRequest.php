@@ -5,8 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rules\File;
 
-
-class UserRequest extends FormRequest
+class UserUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,9 +25,7 @@ class UserRequest extends FormRequest
         return [
             'name' => 'required',
             'phone' => 'required',
-            'profile' => 'required', File::image(),
             'email' => 'required',
-            'password' => 'required',
             'role' => 'required',
         ];
     }
