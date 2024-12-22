@@ -88,6 +88,8 @@
 
                         if(response){
                             alert('Order Successful');
+                            localStorage.clear('shops');
+                            location.href = '/';
                         }
                     }
                 })

@@ -64,6 +64,10 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Users
                             </a>
+                            <a class="nav-link" href="{{route('backend.orders')}}">
+                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                Orders
+                            </a>
                         </div>
                     </div>
                     <div class="sb-sidenav-footer">
