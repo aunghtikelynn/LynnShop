@@ -45,7 +45,7 @@ class FrontController extends Controller
             $order->voucher_no = $voucher_no;
             $order->total = $data->qty * ($data->price - ($data->price*($data->discount/100)));
             $order->qty = $data->qty;
-            $order->payment_slip = '/images/payment-slip/'.$file_name;
+            $order->payment_slip = '/images/payment-slips/'.$file_name;
             $order->status = 'Pending';
             $order->note = $request->note;
             $order->item_id = $data->id;
