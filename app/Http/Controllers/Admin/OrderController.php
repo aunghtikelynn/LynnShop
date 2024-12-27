@@ -9,10 +9,12 @@ use App\Models\Order;
 class OrderController extends Controller
 {
     public function orders(){
+
         $orders = Order::all(); //order အားလုံးယူ
         //var_dump($orders);
         $voucher_group = $orders->groupBy('voucher_no')->toArray();//voucher no တူတာတွေကို Group ဖွဲ့ပြီး Array ပြောင်း
         //dd($voucher_group);
+        $order_data = [];
         foreach($voucher_group as $voucher){
             $orders_id = array_column($voucher, 'id'); //array ထဲမှာ ရှိတဲ့ order id တွေကို ယူ
             $order_data[] = Order::whereIn('id',$orders_id)->where('status','Pending')->first(); //voucher no တူတဲ့ order တွေထဲက ပထမဆုံး id တစ်ခုရဲ့ data တွေကိုဆွဲထုတ်ပြီး array ထဲထည့်
@@ -25,6 +27,7 @@ class OrderController extends Controller
         $orders = Order::all(); //order အားလုံးယူ
         //var_dump($orders);
         $voucher_group = $orders->groupBy('voucher_no')->toArray();
+        $order_data = [];
         foreach($voucher_group as $voucher){
             $orders_id = array_column($voucher, 'id'); 
             $order_data[] = Order::whereIn('id',$orders_id)->where('status','Accept')->first(); 
@@ -38,6 +41,7 @@ class OrderController extends Controller
         $orders = Order::all(); //order အားလုံးယူ
         //var_dump($orders);
         $voucher_group = $orders->groupBy('voucher_no')->toArray();
+        $order_data = [];
         foreach($voucher_group as $voucher){
             $orders_id = array_column($voucher, 'id'); 
             $order_data[] = Order::whereIn('id',$orders_id)->where('status','Complete')->first(); 

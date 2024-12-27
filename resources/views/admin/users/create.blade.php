@@ -59,7 +59,7 @@
                         <option value="" selected>Choose Role</option>
                         <option value="User">User</option>
                         <option value="Admin">Admin</option>
-                        <option value="SuperAdmin">SuperAdmin</option>
+                        <option value="Super Admin">SuperAdmin</option>
                     </select>
                     @error('role')
                         <div class="invalid-feedback">{{$message}} </div>
