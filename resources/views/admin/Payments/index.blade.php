@@ -2,7 +2,7 @@
 @section('content')
     <div class="container-fluid px-4">
         <div class="my-3">
-            <h1 class="mt-4">Items</h1>
+            <h1 class="mt-4">Payments</h1>
             <a href="{{route('backend.payments.create')}}" class="btn btn-primary float-end">Create Payments</a>
         </div>
         <ol class="breadcrumb mb-4">
